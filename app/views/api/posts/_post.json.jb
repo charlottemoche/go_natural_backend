@@ -1,0 +1,9 @@
+{
+  id: post.id,
+  user: post.user,
+  title: post.title,
+  subtitle: post.subtitle,
+  body: post.body,
+  image_url: post.image_url,
+  comments: post.comments
+}

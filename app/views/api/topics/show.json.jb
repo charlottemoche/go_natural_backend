@@ -1,0 +1,1 @@
+topic = render partial: "topic.json.jb", locals: { topic: @topic }
