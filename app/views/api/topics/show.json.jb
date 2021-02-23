@@ -1,1 +1,5 @@
 topic = render partial: "topic.json.jb", locals: { topic: @topic }
+topic[:posts] = @topic.posts.map do |post|
+  render partial: "api/posts/post.json.jb", locals: { post: post }
+end
+topic

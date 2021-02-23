@@ -2,5 +2,4 @@
   id: topic.id,
   title: topic.title,
   image_url: topic.image_url,
-  posts: topic.posts,
 }

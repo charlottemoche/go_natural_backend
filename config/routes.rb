@@ -16,7 +16,7 @@ Rails.application.routes.draw do
     get "/topics/:id" => "topics#show"
 
     get "/posts/:id" => "posts#show"
-    post "/posts" => "posts#create"
+    # post "/posts" => "posts#create"
 
   end
 end
