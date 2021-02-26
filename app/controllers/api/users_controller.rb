@@ -27,26 +27,34 @@ class Api::UsersController < ApplicationController
   def update
     user = params[:id]
     @user = User.find_by(id: user)
-    @user.first_name = params[:first_name] || @user.first_name
-    @user.last_name = params[:last_name] || @user.last_name
-    @user.email = params[:email] || @user.email
-    @user.bio = params[:bio] || @user.bio
-    @user.image_url = params[:image_url] || @user.image_url
-    if params[:password]
-      @user.password = params[:password]
-      @user.password_confirmation = params[:password_confirmation]
-    end
-    if @user.save
-      render json: { message: "Profile successfully updated" }, status: :created
+    if @user == current_user
+      @user.first_name = params[:first_name] || @user.first_name
+      @user.last_name = params[:last_name] || @user.last_name
+      @user.email = params[:email] || @user.email
+      @user.bio = params[:bio] || @user.bio
+      @user.image_url = params[:image_url] || @user.image_url
+      if params[:password]
+        @user.password = params[:password]
+        @user.password_confirmation = params[:password_confirmation]
+      end
+      if @user.save
+        render "show.json.jb"
+      else
+        render json: { errors: @user.errors.full_messages }, status: :bad_request
+      end
     else
-      render json: { errors: @user.errors.full_messages }, status: :bad_request
+      render json: { errors: "You are not authorized to update this user" }, status: :bad_request
     end
   end
 
   def destroy
     user = User.find_by(id: params[:id])
-    user.destroy
-    render json: {message: "Account successfully deleted"}
+    if user == current_user
+      user.destroy
+      render json: { message: "Account successfully deleted" }
+    else
+      render json: { message: "You are not authorized to delete this account" }, status: :bad_request
+    end
   end
 
 end
