@@ -1,0 +1,3 @@
+comment = render partial: "comment.json.jb", locals: { comment: @comment }
+comment[:user] = render partial: "/api/users/user.json.jb", locals: { user: @comment.user }
+comment

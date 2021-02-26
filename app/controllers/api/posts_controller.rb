@@ -25,7 +25,7 @@ class Api::PostsController < ApplicationController
   end
 
   def update
-    @post = Post.find_by(id: params[:id])
+    @post = current_user.posts.find_by(id: params[:id])
     @post.title = params[:title] || @post.title
     @post.subtitle = params[:subtitle] || @post.subtitle
     @post.body = params[:body] || @post.body
@@ -36,6 +36,12 @@ class Api::PostsController < ApplicationController
     else
       render json: {error: @post.errors.full_message}, message: :unprocessable_entity
     end
+  end
+
+  def destroy
+    post = current_user.posts.find_by(id: params[:id])
+    post.destroy
+    render json: {message: "Post successfully deleted"}
   end
 
 end

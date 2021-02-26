@@ -1,4 +1,8 @@
 post = render partial: "post.json.jb", locals: { post: @post }
 post[:user] = render partial: "/api/users/user.json.jb", locals: { user: @post.user }
-
+post[:comments] = @post.comments.map do |comment|
+  comment_hash = render partial: "api/comments/comment.json.jb", locals: { comment: comment }
+  comment_hash[:user] = render partial: "/api/users/user.json.jb", locals: { user: comment.user }
+  comment_hash
+end
 post
