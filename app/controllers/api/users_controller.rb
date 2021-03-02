@@ -9,8 +9,7 @@ class Api::UsersController < ApplicationController
   
   def create
     @user = User.new(
-      first_name: params[:first_name],
-      last_name: params[:last_name],
+      name: params[:name],
       email: params[:email],
       bio: params[:bio],
       image_url: params[:image_url],
@@ -28,8 +27,7 @@ class Api::UsersController < ApplicationController
     user = params[:id]
     @user = User.find_by(id: user)
     if @user == current_user
-      @user.first_name = params[:first_name] || @user.first_name
-      @user.last_name = params[:last_name] || @user.last_name
+      @user.name = params[:name] || @user.name
       @user.email = params[:email] || @user.email
       @user.bio = params[:bio] || @user.bio
       @user.image_url = params[:image_url] || @user.image_url

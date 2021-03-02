@@ -4,4 +4,5 @@
   subtitle: post.subtitle,
   body: post.body,
   image_url: post.image_url,
+  created_at: post.created_at,
 }
