@@ -5,7 +5,7 @@ class Api::CommentsController < ApplicationController
   def create
     @comment = Comment.new(
       body: params[:body],
-      post_id: Post.find_by(id: post_id)
+      post_id: Post.find_by(id: params[:id])
       user_id: current_user.id
     )
     if @comment.save
