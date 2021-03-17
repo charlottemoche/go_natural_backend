@@ -12,7 +12,7 @@ class Api::UsersController < ApplicationController
       name: params[:name],
       email: params[:email],
       bio: params[:bio],
-      image_url: params[:image_url],
+      image_url: cloudinary_url,
       password: params[:password],
       password_confirmation: params[:password_confirmation]
     )
@@ -24,13 +24,19 @@ class Api::UsersController < ApplicationController
   end
 
   def update
+    if params[:image_file].length > 1
+      response = Cloudinary::Uploader.upload(
+      params[:image_file], resource_type: :auto
+      )
+      cloudinary_url = response["secure_url"]
+    end
     user = params[:id]
     @user = User.find_by(id: user)
     if @user == current_user
       @user.name = params[:name] || @user.name
       @user.email = params[:email] || @user.email
       @user.bio = params[:bio] || @user.bio
-      @user.image_url = params[:image_url] || @user.image_url
+      @user.image_url = cloudinary_url || @user.image_url
       if params[:password]
         @user.password = params[:password]
         @user.password_confirmation = params[:password_confirmation]
