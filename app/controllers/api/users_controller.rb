@@ -24,7 +24,8 @@ class Api::UsersController < ApplicationController
   end
 
   def update
-    if params[:image_file].length > 1
+    if params[:image_file]
+      params[:image_file]
       response = Cloudinary::Uploader.upload(
       params[:image_file], resource_type: :auto
       )
