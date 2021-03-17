@@ -1,25 +1,20 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
-
-user = User.create([
-  {first_name: "Charlotte", last_name: "Moche", email: "charlotte@gmail.com", password_digest: "password", bio: "Interested in living more sustainably and reducing my carbon footprint! I write about safe cleaning, ethically made products, and eliminating food waste.", image_url: "image.url"}
-  ]),
-
-topics = Topic.create([
-  {title: "Replacements", image_url: "https://reviewed-com-res.cloudinary.com/image/fetch/s--JMnIpcxA--/b_white,c_fill,cs_srgb,f_auto,fl_progressive.strip_profile,g_xy_center,q_auto,w_1200,x_590,y_514/https://reviewed-production.s3.amazonaws.com/1458843361000/natural-sea-sponges-hero-flickr-walterpro.jpg"},
-  {title: "Natural Cleaning", image_url: "https://www.wendyls.co.nz/wp-content/uploads/2020/04/citrus-paste-ingredients-Copy.jpg"}
-  ]),
-
-posts = Post.create([
-  {title: "Goodbye paper towels", subtitle: "How I replaced wasteful and disposable paper towels with sustainable cloth napkins", body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc nec sem at augue ullamcorper fermentum. Nunc sagittis enim tortor, et consectetur nisi condimentum quis. Quisque diam lectus, tempor ut lectus eget, vehicula eleifend velit. Maecenas malesuada magna nec augue cursus vulputate. Integer cursus feugiat nibh, a semper eros rutrum a. Integer sodales sapien quis rutrum consequat. Duis aliquet at lorem non dignissim. Duis tristique nunc et odio varius, fermentum ringilla ligula tincidunt. Pellentesque finibus accumsan semper. Integer molestie cursus nunc eu gravida.", image_url: "https://www.rd.com/wp-content/uploads/2020/04/GettyImages-105638725-scaled-e1605721451596.jpg", user_id: 1, topic_id: 1}, 
-  {title: "My natural lemon cleaner", subtitle: "Here's what I use to clean my counter tops", body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc nec sem at augue ullamcorper fermentum. Nunc sagittis enim tortor, et consectetur nisi condimentum quis. Quisque diam lectus, tempor ut lectus eget, vehicula eleifend velit. Maecenas malesuada magna nec augue cursus vulputate. Integer cursus feugiat nibh, a semper eros rutrum a. Integer sodales sapien quis rutrum consequat. Duis aliquet at lorem non dignissim. Duis tristique nunc et odio varius, fermentum ringilla ligula tincidunt. Pellentesque finibus accumsan semper. Integer molestie cursus nunc eu gravida.", image_url: "https://cdn.shopify.com/s/files/1/2336/3219/products/shutterstock_336818993meyer_x850.jpg?v=1554665742", user_id: 1, topic_id: 2}
-  ]),
-
-comments = Comment.create([
-  {body: "This is such a great idea! I add lavender essential oil to mine.", user_id: 1, post_id: 2}
-  ])
+User.create!([
+  {name: "Betty Smith", email: "betty@gmail.com", password_digest: "$2a$12$DlvFfXhnStZmI11KjaynOezRykJjKLUI/SqfQ2wDqsiI217JzAsWO", bio: "Interested in living more sustainably and reducing my carbon footprint! I write about safe cleaning, ethically made products, and eliminating food waste.", image_url: "https://res.cloudinary.com/dkivn2rr7/image/upload/v1616003807/nctde7b5lb6dasoxbais.png"},
+  {name: "Bob Brown", email: "bob@gmail.com", password_digest: "$2a$12$r/lEzHtwj.TTb8Gf69ykZu0QG3u3BZ0RNoczGikMhUlnl9u1w8GAa", bio: "I am looking to save the environment", image_url: "https://res.cloudinary.com/dkivn2rr7/image/upload/v1616004187/f0eqask6dbzlk5feb339.png"},
+  {name: "Jean Washington", email: "jean@gmail.com", password_digest: "$2a$12$Td7IQ8wzFtRVXA9.tl7ilOzsUhy9Ra1mRwgPEBIqRD5kfUcdWfqiC", bio: "I would like to waste less food", image_url: "https://res.cloudinary.com/dkivn2rr7/image/upload/v1616004210/o4xa921jxworvsnkpw28.png"},
+  {name: "Sonny Day", email: "sonny@gmail.com", password_digest: "$2a$12$q62O9XjnvXE583peDqFIt.o9Lka2x4XLnPbcb3yFvVWBCAvLSgIk2", bio: "I am interested in reducing the food that I waste when I cook! I love animals.", image_url: "https://res.cloudinary.com/dkivn2rr7/image/upload/v1616005216/piilc3jmf08ovfs0jk9h.png"}
+])
+Topic.create!([
+  {title: "Item Replacements", image_url: "https://reviewed-com-res.cloudinary.com/image/fetch/s--JMnIpcxA--/b_white,c_fill,cs_srgb,f_auto,fl_progressive.strip_profile,g_xy_center,q_auto,w_1200,x_590,y_514/https://reviewed-production.s3.amazonaws.com/1458843361000/natural-sea-sponges-hero-flickr-walterpro.jpg"},
+  {title: "Food Waste Reduction", image_url: "https://www.world-grain.com/ext/resources/Article-Images/2019/05/Food-waste_AdobeStock_56278192_E.jpg?1557172881"},
+  {title: "Natural Cleaning Solutions", image_url: "https://www.wendyls.co.nz/wp-content/uploads/2020/04/citrus-paste-ingredients-Copy.jpg"}
+])
+Post.create!([
+  {title: "Vegetable Stock", body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc nec sem at augue ullamcorper fermentum. Nunc sagittis enim tortor, et consectetur nisi condimentum quis. Quisque diam lectus, tempor ut lectus eget, vehicula eleifend velit. Maecenas malesuada magna nec augue cursus vulputate. Integer cursus feugiat nibh, a semper eros rutrum a. Integer sodales sapien quis rutrum consequat. Duis aliquet at lorem non dignissim. Duis tristique nunc et odio varius, fermentum ringilla ligula tincidunt. Pellentesque finibus accumsan semper. Integer molestie cursus nunc eu gravida.", image_url: "https://www.simplyrecipes.com/thmb/2gmJkJwJUilYWvEKRgT0qDcvzi8=/1800x1197/filters:fill(auto,1)/__opt__aboutcom__coeus__resources__content_migration__simply_recipes__uploads__2012__01__vegetable-stock-horiz-a-1800-2204509c631545afab337cca8378e4b3.jpg", user_id: 3, topic_id: 3, subtitle: "How I make vegetable stock from saving scraps"},
+  {title: "My Natural Lemon Cleaner", body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc nec sem at augue ullamcorper fermentum. Nunc sagittis enim tortor, et consectetur nisi condimentum quis. Quisque diam lectus, tempor ut lectus eget, vehicula eleifend velit. Maecenas malesuada magna nec augue cursus vulputate. Integer cursus feugiat nibh, a semper eros rutrum a. Integer sodales sapien quis rutrum consequat. Duis aliquet at lorem non dignissim. Duis tristique nunc et odio varius, fermentum ringilla ligula tincidunt. Pellentesque finibus accumsan semper. Integer molestie cursus nunc eu gravida.", image_url: "https://cdn.shopify.com/s/files/1/2336/3219/products/shutterstock_336818993meyer_x850.jpg?v=1554665742", user_id: 1, topic_id: 1, subtitle: "Here's what I use to clean my counter tops"},
+  {title: "Goodbye Paper Towels", body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc nec sem at augue ullamcorper fermentum. Nunc sagittis enim tortor, et consectetur nisi condimentum quis. Quisque diam lectus, tempor ut lectus eget, vehicula eleifend velit. Maecenas malesuada magna nec augue cursus vulputate. Integer cursus feugiat nibh, a semper eros rutrum a. Integer sodales sapien quis rutrum consequat. Duis aliquet at lorem non dignissim. Duis tristique nunc et odio varius, fermentum ringilla ligula tincidunt. Pellentesque finibus accumsan semper. Integer molestie cursus nunc eu gravida.", image_url: "https://www.rd.com/wp-content/uploads/2020/04/GettyImages-105638725-scaled-e1605721451596.jpg", user_id: 2, topic_id: 2, subtitle: "How I replaced wasteful and disposable paper towels with sustainable cloth napkins"}
+])
+Comment.create!([
+  {body: "This is so great! I have been looking to find an alternative for paper towels for a while now.", user_id: 1, post_id: 1},
+  {body: "This is a great idea! I add lavender essential oil to mine.", user_id: 2, post_id: 2}
+])
