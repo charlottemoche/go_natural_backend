@@ -44,4 +44,18 @@ class Api::PostsController < ApplicationController
     render json: {message: "Post successfully deleted"}
   end
 
+  def like
+    @post = Post.find(params[:id])
+    @user = current_user.id
+    @post.likes.create(user_id: @user)
+    @post.save
+    render "show.json.jb"
+  end
+  
+  def unlike
+    like = current_user.likes.find_by(post_id: params[:id])
+    like.destroy
+    render "show.json.jb"
+  end
+
 end

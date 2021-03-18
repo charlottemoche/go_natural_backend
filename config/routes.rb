@@ -24,5 +24,8 @@ Rails.application.routes.draw do
     patch "/comments/:id" => "comments#update"
     delete "/comments/:id" => "comments#destroy"
 
+    post "/posts/:id/like" => "posts#like"
+    delete "/posts/:id/like" => "posts#unlike"
+  
   end
 end
