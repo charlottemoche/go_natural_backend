@@ -1,3 +1,13 @@
-@topics.map do |topic|
-  render partial: "topic.json.jb", locals: { topic: topic }
-end
+# @topics.map do |topic|
+#   render partial: "topic.json.jb", locals: { topic: topic }
+# end
+
+{
+  topics: @topics.map do |topic|
+    render partial: "topic.json.jb", locals: { topic: topic }
+  end,
+  posts: Post.all.sort_by{|post| post.likes}.take(5).map do |post|
+    render partial: "api/posts/post.json.jb", locals: { post: post }
+  end
+}
+

@@ -53,6 +53,7 @@ class Api::PostsController < ApplicationController
   end
   
   def unlike
+    @post = Post.find(params[:id])
     like = current_user.likes.find_by(post_id: params[:id])
     like.destroy
     render "show.json.jb"
