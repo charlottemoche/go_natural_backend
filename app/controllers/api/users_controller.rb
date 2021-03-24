@@ -11,8 +11,6 @@ class Api::UsersController < ApplicationController
     @user = User.new(
       name: params[:name],
       email: params[:email],
-      bio: params[:bio],
-      image_url: cloudinary_url,
       password: params[:password],
       password_confirmation: params[:password_confirmation]
     )

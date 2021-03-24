@@ -6,4 +6,5 @@ post[:comments] = @post.comments.map do |comment|
   comment_hash
 end
 post[:likes] = @post.likes
+post[:topic] = @post.topic
 post
