@@ -1,11 +1,17 @@
 class Api::PostsController < ApplicationController
 
-  before_action :authenticate_user, except: [:show]
+  before_action :authenticate_user, except: [:index, :show]
 
   def show
     post_id = params[:id]
     @post = Post.find_by(id: post_id)
     render "show.json.jb"
+  end
+
+  def index
+    @posts = Post.all
+    @posts = @posts.order(created_at: :desc).limit(5)
+    render "index.json.jb"
   end
 
   def create
